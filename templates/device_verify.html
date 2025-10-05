@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Device Verification{% endblock %}
+
+{% block content %}
+<div class="header">
+    <h1>Device Verification</h1>
+    <p>Check your device status below</p>
+</div>
+
+<div class="user-info">
+    <strong>User ID:</strong> {{ user_id }}
+</div>
+
+{% if verified_info.status == "verified" %}
+    <div class="alert alert-success">
+        ✅ Device Verified
+    </div>
+{% elif verified_info.status == "failed" %}
+    <div class="alert alert-success">
+        ✅ Device alredy Verified<br>
+        <strong>Time:</strong> {{ verified_info.time }}
+    </div>
+{% else %}
+    <div class="alert alert-error">
+        ⏳ Verification Pending
+    </div>
+{% endif %}
+
+<button class="btn" onclick="exitWebApp()">Exit WebApp</button>
+
+<script>
+function exitWebApp() {
+    // Attempt to close the web page
+    window.close();
+}
+</script>
+{% endblock %}
